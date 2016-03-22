@@ -133,15 +133,24 @@ function randomWithinRange(min, max) {
   return randomNumber;
 }
 
-function deliveryDataFor(arrayIndex) {
+function pizzasDuringHour(arrayIndex) {
   // for ((ii=0; ii<marketData.length; ii++) {
     var pizzasPerHour = randomWithinRange(marketData[arrayIndex].minPizzasPerHour, marketData[arrayIndex].maxPizzasPerHour);
     var message = 'Pizzas per hour for ' + marketData[arrayIndex].time + ': ' + pizzasPerHour;
     console.log(message);
     return pizzasPerHour;
   }
-//var deliveriesPerHour;
-//var driversNeeded;
-// }
+exports.pizzasDuringHour = pizzasDuringHour;
 
-exports.deliveryDataFor = deliveryDataFor;
+function deliveriesDuringHour(arrayIndex) {
+  var deliveriesPerHour = randomWithinRange(marketData[arrayIndex].minDlvryPerHour, marketData[arrayIndex].maxDlvryPerHour);
+  var message = 'Deliveries per hour for ' + marketData[arrayIndex].time + ': ' + deliveriesPerHour;
+  console.log(message);
+  return deliveriesPerHour;
+}
+exports.deliveriesDuringHour = deliveriesDuringHour;
+
+function driversDuringHour(arrayIndex) {
+
+}
+exports.driversDuringHour = driversDuringHour;
