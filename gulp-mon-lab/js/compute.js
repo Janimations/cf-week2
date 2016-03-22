@@ -13,16 +13,11 @@ function multiply(num1, num2) {
 exports.multiply = multiply;
 
 function sumAndMultiply(num1, num2, num3) {
-  var array = [];
-  var sumFirstTwo = sum(num1, num2);
-  var sumAll = sum(sumFirstTwo, num3);
-  array[0] = sumAll;
-  var multFirstTwo = multiply(num1, num2);
-  var multAll = multiply(multFirstTwo, num3);
-  array[1] = multAll;
+  var sumAll = sum(sum(num1, num2), num3);
+  var multAll = multiply(multiply(num1, num2), num3);
   console.log(num1 + ' and ' + num2 + ' and ' + num3 + ' sum to ' +sumAll + '.');
   console.log('The numbers ' + num1 + ' and ' + num2 + ' and ' + num3 + ' have a product of ' + multAll + '.');
-  return array;
+  return [sumAll, multAll];
 }
 exports.sumAndMultiply = sumAndMultiply;
 
