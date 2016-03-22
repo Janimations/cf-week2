@@ -127,3 +127,19 @@ var marketData = [
     'maxDlvryPerHour': 11
   }
 ];
+
+var deliveryData = function() {
+  for ((ii=0; ii<marketData.length; ii++) {
+    var pizzasPerHour =
+    var deliveriesPerHour;
+    var driversNeeded;
+  }
+
+// var store1 = {
+//   name: 'Beaverton',
+//   deliveryData: function() {
+//     for (ii=0; ii<marketData.length; ii++) {
+//
+//     }
+//   }
+// };
