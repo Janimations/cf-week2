@@ -128,9 +128,14 @@ var marketData = [
   }
 ];
 
+function randomWithinRange(min, max) {
+  var randomNumber = Math.floor(Math.random() * (max-min+1) + min);
+  return randomNumber;
+}
+
 function deliveryDataFor(arrayIndex) {
   // for ((ii=0; ii<marketData.length; ii++) {
-    var pizzasPerHour = Math.floor(Math.random() * (marketData[arrayIndex].maxPizzasPerHour - marketData[arrayIndex].minPizzasPerHour) + marketData[arrayIndex].minPizzasPerHour);
+    var pizzasPerHour = randomWithinRange(marketData[arrayIndex].minPizzasPerHour, marketData[arrayIndex].maxPizzasPerHour);
     var message = 'Pizzas per hour for ' + marketData[arrayIndex].time + ': ' + pizzasPerHour;
     console.log(message);
     return pizzasPerHour;
