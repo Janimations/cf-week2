@@ -128,18 +128,15 @@ var marketData = [
   }
 ];
 
-var deliveryData = function() {
-  for ((ii=0; ii<marketData.length; ii++) {
-    var pizzasPerHour =
-    var deliveriesPerHour;
-    var driversNeeded;
+function deliveryDataFor(arrayIndex) {
+  // for ((ii=0; ii<marketData.length; ii++) {
+    var pizzasPerHour = Math.floor(Math.random() * (marketData[arrayIndex].maxPizzasPerHour - marketData[arrayIndex].minPizzasPerHour) + marketData[arrayIndex].minPizzasPerHour);
+    var message = 'Pizzas per hour for ' + marketData[arrayIndex].time + ': ' + pizzasPerHour;
+    console.log(message);
+    return pizzasPerHour;
   }
+//var deliveriesPerHour;
+//var driversNeeded;
+// }
 
-// var store1 = {
-//   name: 'Beaverton',
-//   deliveryData: function() {
-//     for (ii=0; ii<marketData.length; ii++) {
-//
-//     }
-//   }
-// };
+exports.deliveryDataFor = deliveryDataFor;
