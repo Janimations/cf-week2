@@ -105,7 +105,7 @@ var marketData = [
     'minDlvryPerHour': 5,
     'maxDlvryPerHour': 12
   },
-  {
+  {                                     //[15]
     'time': '23:00',
     'minPizzasPerHour': 5,
     'maxPizzasPerHour': 20,
@@ -133,17 +133,23 @@ function randomWithinRange(min, max) {
   return randomNumber;
 }
 
+var pizzasPerHour = 0;
 function pizzasDuringHour(arrayIndex) {
   // for ((ii=0; ii<marketData.length; ii++) {
-    var pizzasPerHour = randomWithinRange(marketData[arrayIndex].minPizzasPerHour, marketData[arrayIndex].maxPizzasPerHour);
+    pizzasPerHour = randomWithinRange(marketData[arrayIndex].minPizzasPerHour, marketData[arrayIndex].maxPizzasPerHour);
     var message = 'Pizzas per hour for ' + marketData[arrayIndex].time + ': ' + pizzasPerHour;
     console.log(message);
     return pizzasPerHour;
   }
 exports.pizzasDuringHour = pizzasDuringHour;
 
+var deliveriesPerHour = 0;
 function deliveriesDuringHour(arrayIndex) {
-  var deliveriesPerHour = randomWithinRange(marketData[arrayIndex].minDlvryPerHour, marketData[arrayIndex].maxDlvryPerHour);
+  if (pizzasPerHour>0) {
+    do {
+      deliveriesPerHour = randomWithinRange(marketData[arrayIndex].minDlvryPerHour, marketData[arrayIndex].maxDlvryPerHour);
+    } while (deliveriesPerHour > pizzasPerHour)
+  }
   var message = 'Deliveries per hour for ' + marketData[arrayIndex].time + ': ' + deliveriesPerHour;
   console.log(message);
   return deliveriesPerHour;
@@ -152,13 +158,15 @@ exports.deliveriesDuringHour = deliveriesDuringHour;
 
 function driversDuringHour(arrayIndex) {
   var driversNeeded;
-  var deliveries = deliveriesDuringHour(arrayIndex);
-  var remainder = (Math.ceil(deliveries/3))%3;
-  if (remainder = 0) {
-    driversNeeded = deliveries/3;
-  } else {
-    driversNeeded = Math.floor(deliveries/3) + 1;
-  }
+  var deliveries = deliveriesPerHour;
+  var remainder = deliveries%3;
+  if (deliveries === 0) {
+    driversNeeded = 0;
+  } else if (remainder === 0) {
+      driversNeeded = deliveries/3;
+    } else {
+        driversNeeded = Math.floor(deliveries/3) + 1;
+    }
   var message = 'Recommended drivers for the hour beginning ' + marketData[arrayIndex].time + ': ' + driversNeeded;
   console.log(message);
   return driversNeeded;
