@@ -86,10 +86,14 @@ var store6 = {
   }
 };
 
-function createPizzaTable(title, id) {
-  var newTable = document.createElement('table');
-  newTable.setAttribute('id', id);
+function createPizzaTable(title, tableId) {
   var bodyEl = document.getElementsByTagName('body')[0];
+  var h2new = document.createElement('h2');
+  var h2text = document.createTextNode(title);
+  h2new.appendChild(h2text);
+  bodyEl.appendChild(h2new);
+  var newTable = document.createElement('table');
+  newTable.setAttribute('id', tableId);
   bodyEl.appendChild(newTable);
   var newTableRow = document.createElement('tr');
   newTable.appendChild(newTableRow);
@@ -104,12 +108,13 @@ function createPizzaTable(title, id) {
   }
 }
 
-var getBody = document.getElementsByTagName('body')[0];
-var h2new = document.createElement('h2');
-var h2text = document.createTextNode(__LOCATION__);
-h2new.appendChild(h2text);
-getBody.appendChild(h2new);
-
+function createTableRow(tableId, thisRowId, array) {  //array of td's
+  for (kk=0; kk<array.length; kk++) {
+    var newTableRow = document.createElement('tr');
+    newTableRow.setAttribute('id', thisRowId);
+    var table = document.getElementById(tableId);
+    table.appendChild(newTableRow);
+}
 
 createPizzaTable('BEAVERTON', 'beaverton');
 
