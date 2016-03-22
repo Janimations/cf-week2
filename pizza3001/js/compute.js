@@ -151,6 +151,16 @@ function deliveriesDuringHour(arrayIndex) {
 exports.deliveriesDuringHour = deliveriesDuringHour;
 
 function driversDuringHour(arrayIndex) {
-
+  var driversNeeded;
+  var deliveries = deliveriesDuringHour(arrayIndex);
+  var remainder = (Math.ceil(deliveries/3))%3;
+  if (remainder = 0) {
+    driversNeeded = deliveries/3;
+  } else {
+    driversNeeded = Math.floor(deliveries/3) + 1;
+  }
+  var message = 'Recommended drivers for the hour beginning ' + marketData[arrayIndex].time + ': ' + driversNeeded;
+  console.log(message);
+  return driversNeeded;
 }
 exports.driversDuringHour = driversDuringHour;
