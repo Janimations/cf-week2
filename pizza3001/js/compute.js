@@ -135,12 +135,11 @@ function randomWithinRange(min, max) {
 
 var pizzasPerHour = 0;
 function pizzasDuringHour(arrayIndex) {
-  // for ((ii=0; ii<marketData.length; ii++) {
-    pizzasPerHour = randomWithinRange(marketData[arrayIndex].minPizzasPerHour, marketData[arrayIndex].maxPizzasPerHour);
-    var message = 'Pizzas per hour for ' + marketData[arrayIndex].time + ': ' + pizzasPerHour;
-    console.log(message);
-    return pizzasPerHour;
-  }
+  pizzasPerHour = randomWithinRange(marketData[arrayIndex].minPizzasPerHour, marketData[arrayIndex].maxPizzasPerHour);
+  // var message = 'Pizzas per hour for ' + marketData[arrayIndex].time + ': ' + pizzasPerHour;
+  // console.log(message);
+  return pizzasPerHour;
+}
 exports.pizzasDuringHour = pizzasDuringHour;
 
 var deliveriesPerHour = 0;
@@ -150,8 +149,8 @@ function deliveriesDuringHour(arrayIndex) {
       deliveriesPerHour = randomWithinRange(marketData[arrayIndex].minDlvryPerHour, marketData[arrayIndex].maxDlvryPerHour);
     } while (deliveriesPerHour > pizzasPerHour)
   }
-  var message = 'Deliveries per hour for ' + marketData[arrayIndex].time + ': ' + deliveriesPerHour;
-  console.log(message);
+  // var message = 'Deliveries per hour for ' + marketData[arrayIndex].time + ': ' + deliveriesPerHour;
+  // console.log(message);
   return deliveriesPerHour;
 }
 exports.deliveriesDuringHour = deliveriesDuringHour;
@@ -167,8 +166,8 @@ function driversDuringHour(arrayIndex) {
     } else {
         driversNeeded = Math.floor(deliveries/3) + 1;
     }
-  var message = 'Recommended drivers for the hour beginning ' + marketData[arrayIndex].time + ': ' + driversNeeded;
-  console.log(message);
+  // var message = 'Recommended drivers for the hour beginning ' + marketData[arrayIndex].time + ': ' + driversNeeded;
+  // console.log(message);
   return driversNeeded;
 }
 exports.driversDuringHour = driversDuringHour;
