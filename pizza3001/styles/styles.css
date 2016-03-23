@@ -10,15 +10,21 @@ html.public {
   width: auto;
 }
 
+html.private {
+  background-color: gray;
+}
+
 h1, h2 {
   text-transform: uppercase;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 0;
+  text-align: center;
 }
 
 #index-container {
   background-image: url('../images/galaxy.jpg');
-  height: 100%;
+  height: 110%;
   width: 80%;
   position: absolute;
   top: 0;
@@ -47,14 +53,24 @@ h1, h2 {
   margin: 0;
 }
 
+#pizza3001 {
+  font-size: 4em;
+  text-transform: lowercase;
+
+}
+
 h3 {
   margin-top: 0;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 table {
   border: solid 2px black;
   border-collapse: collapse;
   background-color: lightgray;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 th, td {
