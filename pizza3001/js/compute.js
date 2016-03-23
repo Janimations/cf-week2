@@ -134,8 +134,10 @@ function randomWithinRange(min, max) {
 }
 
 var pizzasPerHour = 0;
+var totalPizzasPerDay = 0;
 function pizzasDuringHour(arrayIndex) {
   pizzasPerHour = randomWithinRange(marketData[arrayIndex].minPizzasPerHour, marketData[arrayIndex].maxPizzasPerHour);
+  totalPizzasPerDay += pizzasPerHour;
   // var message = 'Pizzas per hour for ' + marketData[arrayIndex].time + ': ' + pizzasPerHour;
   // console.log(message);
   return pizzasPerHour;

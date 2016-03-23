@@ -32,8 +32,9 @@ describe('Test deliveriesDuringHour', function() {
 describe('Test driversDuringHour', function() {
 
   for (var jj=0; jj<100; jj++) {
-    it('should return a number between 2 and 4', function() { assert(2 <= compute.driversDuringHour(15) && compute.driversDuringHour(15) <= 4); });
+    it('should return a number between 1 and 3', function() { assert(1 <= compute.driversDuringHour(10) && compute.driversDuringHour(10) <= 3); });
   }
+
   for (var jj=0; jj<100; jj++) {
     it('should return a number between 0 and 2', function() { assert(0 <= compute.driversDuringHour(0) && compute.driversDuringHour(0) <= 2); });
   }
