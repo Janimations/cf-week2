@@ -1,7 +1,15 @@
-table {
-  border: solid 2px black;
+* {
+  font-family: 'Garamond', sans-serif;
 }
 
-th, tr, td {
-  border: inherit;
+table {
+  border: solid 2px black;
+  border-collapse: collapse;
+  background-color: lightgray;
+}
+
+th, td {
+  border: solid 2px black;
+  padding: 5px;
+  text-align: center;
 }
