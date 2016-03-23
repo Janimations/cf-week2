@@ -49,15 +49,19 @@ function createPizzaTable(title, tableId) {
 
 var store5 = {
   name: 'Clackamas',
-  pizzaTable: createPizzaTable('Clackamas', 'clackamas')
+  pizzaTable: function() {
+    createPizzaTable('Clackamas', 'clackamas')
+  }
 };
 
 var store6 = {
   name: 'PDX-Airport',
-  pizzaTable: createPizzaTable('PDX-Airport', 'pdx-airport')
+  pizzaTable: function() {
+    createPizzaTable('PDX-Airport', 'pdx-airport')
+  }
 };
 
-store5.pizzaTable;
-store6.pizzaTable;
+store5.pizzaTable();
+store6.pizzaTable();
 
 });
