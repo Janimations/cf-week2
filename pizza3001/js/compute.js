@@ -231,6 +231,93 @@ function getTotalPizzasPerWeek() {
   return totalPizzasPerWeek;
 };
 
+
+//BUILDING TABLE GENERATOR (SO THAT TABLE GENERATION AND DATA GENERATION CAN BE SEPARATED FROM EACH OTHER)
+//************************NEW FUNCTION!!!!*******************************
+function createDiv(divId, parentId) {
+  var parentEl = document.getElementById(parentId);
+  var newDiv = document.createElement('div');
+  newDiv.setAttribute('id', divId);
+  parentEl.appendChild(newDiv);
+};
+
+//************************NEW FUNCTION!!!!*******************************
+function createTable(tableId, parentId) {
+  var parentEl = document.getElementById(parentId);
+  var newTable = document.createElement('table');
+  newTable.setAttribute('id', tableId);
+  parentEl.appendChild(newTable);
+};
+
+//************************NEW FUNCTION!!!!*******************************
+function createTableHead(headId, parentId) {
+  var parentEl = document.getElementById(parentId);
+  var newThead = document.createElement('thead');
+  newThead.setAttribute('id', headId);
+  parentEl.appendChild(newThead);
+};
+
+//************************NEW FUNCTION!!!!*******************************
+function createTh(thId, parentId, contents) {
+  var parentEl = document.getElementById(parentId);
+  var newTh = document.createElement('th');
+  newTh.setAttribute('id', thId);
+  parentEl.appendChild(newTh);
+  var nodeText = document.createTextNode(contents);
+  newTh.appendChild(nodeText);
+};
+
+//************************NEW FUNCTION!!!!*******************************
+function createTableBody(bodyId, parentId) {
+  var parentEl = document.getElementById(parentId);
+  var newTbody = document.createElement('thbody');
+  newTbody.setAttribute('id', bodyId);
+  parentEl.appendChild(newTbody);
+};
+
+//************************NEW FUNCTION!!!!*******************************
+function createTr(trId, parentId) {
+  var parentEl = document.getElementById(parentId);
+  var newTrow = document.createElement('tr');
+  newTrow.setAttribute('id', trId);
+  parentEl.appendChild(newTrow);
+};
+
+//************************NEW FUNCTION!!!!*******************************
+function createTd(tdId, parentId, contents) {
+  var parentEl = document.getElementById(parentId);
+  var newTdata = document.createElement('td');
+  newTdata.setAttribute('id', tdId);
+  parentEl.appendChild(newTdata);
+  var nodeText = document.createTextNode(contents);
+  newTdata.appendChild(nodeText);
+};
+
+//************************NEW FUNCTION!!!!*******************************
+function createTableFooter(footerId, parentId) {
+  var parentEl = document.getElementById(parentId);
+  var newTfooter = document.createElement('tfoot');
+  newTfooter.setAttribute('id', footerId);
+  parentEl.appendChild(newTfooter);
+};
+
+//************************NEW FUNCTION!!!!*******************************
+function startPizzaTable(storeLoc, appendHere) {
+  var divId = storeLoc + "-div";
+  createDiv(divId, appendHere);
+  var tableId = storeLoc + "-tbl";
+  createTable(tableId, divId);
+  var theadId = storeLoc + '-head';
+  createTableHead(theadId, tableId);
+  var trId = storeLoc + '-tr';
+  createTr(trId, theadId);
+  var thId = storeLoc + "-th" + 1;    ///FOR populatePizzaTable, this number must increment by 1
+  createTh(thId, trId, storeLoc);
+};
+
+
+
+
 var store1 = {
   name: 'Beaverton',
   pizzaTable: function() {
