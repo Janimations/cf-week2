@@ -47,11 +47,17 @@ function createPizzaTable(title, tableId) {
   }
 };
 
+var store5 = {
+  name: 'Clackamas',
+  pizzaTable: createPizzaTable('Clackamas', 'clackamas')
+};
+
 var store6 = {
   name: 'PDX-Airport',
   pizzaTable: createPizzaTable('PDX-Airport', 'pdx-airport')
 };
 
+store5.pizzaTable;
 store6.pizzaTable;
 
 });
