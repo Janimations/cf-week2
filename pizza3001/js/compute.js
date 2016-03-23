@@ -144,10 +144,14 @@ exports.pizzasDuringHour = pizzasDuringHour;
 
 var deliveriesPerHour = 0;
 function deliveriesDuringHour(arrayIndex) {
+
+  //isolated broswer refresh error to 148 -150 TODO: refactor logic
+  
   if (pizzasPerHour>0) {
-    do {
-      deliveriesPerHour = randomWithinRange(marketData[arrayIndex].minDlvryPerHour, marketData[arrayIndex].maxDlvryPerHour);
-    } while (deliveriesPerHour > pizzasPerHour)
+    console.log("test");
+    // do {
+    //   deliveriesPerHour = randomWithinRange(marketData[arrayIndex].minDlvryPerHour, marketData[arrayIndex].maxDlvryPerHour);
+    // } while (deliveriesPerHour > pizzasPerHour)
   }
   // var message = 'Deliveries per hour for ' + marketData[arrayIndex].time + ': ' + deliveriesPerHour;
   // console.log(message);
