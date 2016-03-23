@@ -105,7 +105,7 @@ var marketData = [
     'minDlvryPerHour': 5,
     'maxDlvryPerHour': 12
   },
-  {                                     //[15]
+  {
     'time': '23:00',
     'minPizzasPerHour': 5,
     'maxPizzasPerHour': 20,
@@ -128,6 +128,8 @@ var marketData = [
   }
 ];
 
+var totalPizzasPerDay = 0;
+
 function randomWithinRange(min, max) {
   var randomNumber = Math.floor(Math.random() * (max-min+1) + min);
   return randomNumber;
@@ -136,28 +138,18 @@ function randomWithinRange(min, max) {
 var pizzasPerHour = 0;
 function pizzasDuringHour(arrayIndex) {
   pizzasPerHour = randomWithinRange(marketData[arrayIndex].minPizzasPerHour, marketData[arrayIndex].maxPizzasPerHour);
-  // var message = 'Pizzas per hour for ' + marketData[arrayIndex].time + ': ' + pizzasPerHour;
-  // console.log(message);
+  totalPizzasPerDay += pizzasPerHour;
   return pizzasPerHour;
 }
-exports.pizzasDuringHour = pizzasDuringHour;
 
 var deliveriesPerHour = 0;
 function deliveriesDuringHour(arrayIndex) {
-
-  //isolated broswer refresh error to 148 -150 TODO: refactor logic
-  
-  if (pizzasPerHour>0) {
-    console.log("test");
-    // do {
-    //   deliveriesPerHour = randomWithinRange(marketData[arrayIndex].minDlvryPerHour, marketData[arrayIndex].maxDlvryPerHour);
-    // } while (deliveriesPerHour > pizzasPerHour)
+  deliveriesPerHour = randomWithinRange(marketData[arrayIndex].minDlvryPerHour, marketData[arrayIndex].maxDlvryPerHour);
+  if (deliveriesPerHour > pizzasPerHour) {
+    deliveriesPerHour -= (deliveriesPerHour-pizzasPerHour);
   }
-  // var message = 'Deliveries per hour for ' + marketData[arrayIndex].time + ': ' + deliveriesPerHour;
-  // console.log(message);
   return deliveriesPerHour;
 }
-exports.deliveriesDuringHour = deliveriesDuringHour;
 
 function driversDuringHour(arrayIndex) {
   var driversNeeded;
@@ -170,8 +162,113 @@ function driversDuringHour(arrayIndex) {
     } else {
         driversNeeded = Math.floor(deliveries/3) + 1;
     }
-  // var message = 'Recommended drivers for the hour beginning ' + marketData[arrayIndex].time + ': ' + driversNeeded;
-  // console.log(message);
   return driversNeeded;
 }
-exports.driversDuringHour = driversDuringHour;
+
+function createPizzaTable(title, tableId) {
+  //Create h2 and first row and insert both into page
+  var bodyEl = document.getElementsByTagName('body')[0];
+  var h2new = document.createElement('h2');
+  var h2text = document.createTextNode(title);
+  h2new.appendChild(h2text);
+  bodyEl.appendChild(h2new);
+  var newTable = document.createElement('table');
+  newTable.setAttribute('id', tableId);
+  bodyEl.appendChild(newTable);
+  var newTableRow = document.createElement('tr');
+  newTable.appendChild(newTableRow);
+
+  var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
+
+  for (jj=0; jj<headings.length; jj++) {
+    var tableHeading = document.createElement('th');
+    newTableRow.appendChild(tableHeading);
+    var headingText = document.createTextNode(headings[jj]);
+    tableHeading.appendChild(headingText);
+  }
+
+  var pizzaTable = document.getElementById(tableId);
+
+  for (ii=0; ii<marketData.length; ii++) {
+    //Generate random data from marketData
+    var time = marketData[ii].time;
+    var pizzasThisHour = pizzasDuringHour(ii);
+    if (pizzasThisHour === 0) {
+      var deliveriesThisHour = 0;
+    } else {
+      var deliveriesThisHour = deliveriesDuringHour(ii);
+    }
+    if (pizzasThisHour === 0) {
+      var driversThisHour = 0;
+    } else {
+      var driversThisHour = driversDuringHour(ii);
+    }
+    //store random data in array
+    var thisHourInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
+    //Make new row for each hour's random data array
+    var newTableRow = document.createElement('tr');
+    for (kk=0; kk<thisHourInfo.length; kk++) {
+      var newTableCell = document.createElement('td');
+      var tdText = document.createTextNode(thisHourInfo[kk]);
+      newTableCell.appendChild(tdText);
+      newTableRow.appendChild(newTableCell);
+    }
+    //Append each hour's row to pizzaTable
+    pizzaTable.appendChild(newTableRow);
+  }
+};
+
+var totalPizzasPerWeek;
+function getTotalPizzasPerWeek() {
+  var totalPizzasPerDay = 0;
+  for (ii=0; ii<marketData.length; ii++) {
+    //Generate random data from marketData
+    var pizzasThisHour = pizzasDuringHour(ii);
+    totalPizzasPerDay += pizzasThisHour;
+  }
+  var allLocations = totalPizzasPerDay * 6;
+  totalPizzasPerWeek = allLocations * 7;
+  return totalPizzasPerWeek;
+};
+
+var store1 = {
+  name: 'Beaverton',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
+
+var store2 = {
+  name: 'Hillsboro',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
+
+var store3 = {
+  name: 'Downtown',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
+
+var store4 = {
+  name: 'Northeast',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
+
+var store5 = {
+  name: 'Clackamas',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
+
+var store6 = {
+  name: 'PDX-Airport',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
