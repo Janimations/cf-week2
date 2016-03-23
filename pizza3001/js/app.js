@@ -47,20 +47,52 @@ function createPizzaTable(title, tableId) {
   }
 };
 
+var store1 = {
+  name: 'Beaverton',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
+
+var store2 = {
+  name: 'Hillsboro',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
+
+var store3 = {
+  name: 'Downtown',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
+
+var store4 = {
+  name: 'Northeast',
+  pizzaTable: function() {
+    createPizzaTable(this.name, this.name.toLowerCase())
+  }
+};
+
 var store5 = {
   name: 'Clackamas',
   pizzaTable: function() {
-    createPizzaTable('Clackamas', 'clackamas')
+    createPizzaTable(this.name, this.name.toLowerCase())
   }
 };
 
 var store6 = {
   name: 'PDX-Airport',
   pizzaTable: function() {
-    createPizzaTable('PDX-Airport', 'pdx-airport')
+    createPizzaTable(this.name, this.name.toLowerCase())
   }
 };
 
+store1.pizzaTable();
+store2.pizzaTable();
+store3.pizzaTable();
+store4.pizzaTable();
 store5.pizzaTable();
 store6.pizzaTable();
 
