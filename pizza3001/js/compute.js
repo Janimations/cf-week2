@@ -352,330 +352,372 @@ function populatePizzaTable() {
 }
 //////////////////////////methods for store objects///////////////////////////////
 
-/////////////////////////////////store objects////////////////////////////////////
-var store1 = {
-  name: 'beaverton',
-  dailyPizzaData: [],         //Create array to store each hourlyInfo array in
-  getPizzaData: function() {
-    for (ii=0; ii<marketData.length; ii++) {
-      //Generate random data from marketData
-      var time = marketData[ii].time;
-      var pizzasThisHour = pizzasDuringHour(ii);
-      if (pizzasThisHour === 0) {
-        var deliveriesThisHour = 0;
-      } else {
-        var deliveriesThisHour = deliveriesDuringHour(ii);
+///////////////////////////////array of store objects/////////////////////////////
+var stores = [
+  {
+    name: 'beaverton',
+    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    getPizzaData: function() {
+      for (ii=0; ii<marketData.length; ii++) {
+        //Generate random data from marketData
+        var time = marketData[ii].time;
+        var pizzasThisHour = pizzasDuringHour(ii);
+        if (pizzasThisHour === 0) {
+          var deliveriesThisHour = 0;
+        } else {
+          var deliveriesThisHour = deliveriesDuringHour(ii);
+        }
+        if (pizzasThisHour === 0) {
+          var driversThisHour = 0;
+        } else {
+          var driversThisHour = driversDuringHour(ii);
+        }
+        //store random data in array
+        var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
+        this.dailyPizzaData.push(hourlyInfo);
       }
-      if (pizzasThisHour === 0) {
-        var driversThisHour = 0;
-      } else {
-        var driversThisHour = driversDuringHour(ii);
-      }
-      //store random data in array
-      var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
-      this.dailyPizzaData.push(hourlyInfo);
-    }
-    return this.dailyPizzaData;
-  },
-  startPizzaTable: function(appendToThisId) {
-    var divId = this.name + '-div';
-    createDiv(divId, appendToThisId);
-    var tableId = this.name + '-tbl';
-    createTable(tableId, divId);
-    var theadId = this.name + '-head';
-    createTableHead(theadId, tableId);
-    var trId = this.name + '-headTr';
-    createTr(trId, theadId);
-    var thId = this.name + '-th';
-    createTh(thId, trId, this.name);
-    var tbodyId = this.name + '-body';
-    createTableBody(tbodyId, tableId);
-    var headingsTrId = this.name + '-headingsTr';
-    createTr(headingsTrId, tbodyId);
-    var tfooterId = this.name + '-footer';
-    createTableFooter(tfooterId, tableId);
+      return this.dailyPizzaData;
+    },
+    startPizzaTable: function(appendToThisId) {
+      var divId = this.name + '-div';
+      createDiv(divId, appendToThisId);
+      var tableId = this.name + '-tbl';
+      createTable(tableId, divId);
+      var theadId = this.name + '-head';
+      createTableHead(theadId, tableId);
+      var trId = this.name + '-headTr';
+      createTr(trId, theadId);
+      var thId = this.name + '-th';
+      createTh(thId, trId, this.name);
+      var tbodyId = this.name + '-body';
+      createTableBody(tbodyId, tableId);
+      var headingsTrId = this.name + '-headingsTr';
+      createTr(headingsTrId, tbodyId);
+      var tfooterId = this.name + '-footer';
+      createTableFooter(tfooterId, tableId);
 
-    var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
-    for (hh=0; hh<headings.length; hh++) {
-      var headingThId = this.name + headings[hh];
-      createTh(headingThId, headingsTrId, headings[hh]);
+      var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
+      for (hh=0; hh<headings.length; hh++) {
+        var headingThId = this.name + headings[hh];
+        createTh(headingThId, headingsTrId, headings[hh]);
+      }
+    },
+    populatePizzaTable: function() {
+      for (aa=0; aa<this.dailyPizzaData.length; aa++) {
+        var hourData = this.dailyPizzaData[aa];
+        var tableBodyId = this.name + '-body';
+        var tableRowId = this.name + '-tr-' + hourData[0];
+        createTr(tableRowId, tableBodyId);
+        for (bb=0; bb<hourData.length; bb++) {
+          createTd(tableRowId, hourData[bb]);
+        }
+      }
     }
   },
-  populatePizzaTable: function() {
-    for (aa=0; aa<this.dailyPizzaData.length; aa++) {
-      var hourData = this.dailyPizzaData[aa];
-      var tableBodyId = this.name + '-body';
-      var tableRowId = this.name + '-tr-' + hourData[0];
-      createTr(tableRowId, tableBodyId);
-      for (bb=0; bb<hourData.length; bb++) {
-        createTd(tableRowId, hourData[bb]);
+
+  {
+    name: 'hillsboro',
+    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    getPizzaData: function() {
+      for (ii=0; ii<marketData.length; ii++) {
+        //Generate random data from marketData
+        var time = marketData[ii].time;
+        var pizzasThisHour = pizzasDuringHour(ii);
+        if (pizzasThisHour === 0) {
+          var deliveriesThisHour = 0;
+        } else {
+          var deliveriesThisHour = deliveriesDuringHour(ii);
+        }
+        if (pizzasThisHour === 0) {
+          var driversThisHour = 0;
+        } else {
+          var driversThisHour = driversDuringHour(ii);
+        }
+        //store random data in array
+        var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
+        this.dailyPizzaData.push(hourlyInfo);
+      }
+      return this.dailyPizzaData;
+    },
+    startPizzaTable: function(appendToThisId) {
+      var divId = this.name + '-div';
+      createDiv(divId, appendToThisId);
+      var tableId = this.name + '-tbl';
+      createTable(tableId, divId);
+      var theadId = this.name + '-head';
+      createTableHead(theadId, tableId);
+      var trId = this.name + '-headTr';
+      createTr(trId, theadId);
+      var thId = this.name + '-th';
+      createTh(thId, trId, this.name);
+      var tbodyId = this.name + '-body';
+      createTableBody(tbodyId, tableId);
+      var headingsTrId = this.name + '-headingsTr';
+      createTr(headingsTrId, tbodyId);
+      var tfooterId = this.name + '-footer';
+      createTableFooter(tfooterId, tableId);
+
+      var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
+      for (hh=0; hh<headings.length; hh++) {
+        var headingThId = this.name + headings[hh];
+        createTh(headingThId, headingsTrId, headings[hh]);
+      }
+    },
+    populatePizzaTable: function() {
+      for (aa=0; aa<this.dailyPizzaData.length; aa++) {
+        var hourData = this.dailyPizzaData[aa];
+        var tableBodyId = this.name + '-body';
+        var tableRowId = this.name + '-tr-' + hourData[0];
+        createTr(tableRowId, tableBodyId);
+        for (bb=0; bb<hourData.length; bb++) {
+          createTd(tableRowId, hourData[bb]);
+        }
+      }
+    }
+  },
+
+  {
+    name: 'downtown',
+    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    getPizzaData: function() {
+      for (ii=0; ii<marketData.length; ii++) {
+        //Generate random data from marketData
+        var time = marketData[ii].time;
+        var pizzasThisHour = pizzasDuringHour(ii);
+        if (pizzasThisHour === 0) {
+          var deliveriesThisHour = 0;
+        } else {
+          var deliveriesThisHour = deliveriesDuringHour(ii);
+        }
+        if (pizzasThisHour === 0) {
+          var driversThisHour = 0;
+        } else {
+          var driversThisHour = driversDuringHour(ii);
+        }
+        //store random data in array
+        var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
+        this.dailyPizzaData.push(hourlyInfo);
+      }
+      return this.dailyPizzaData;
+    },
+    startPizzaTable: function(appendToThisId) {
+      var divId = this.name + '-div';
+      createDiv(divId, appendToThisId);
+      var tableId = this.name + '-tbl';
+      createTable(tableId, divId);
+      var theadId = this.name + '-head';
+      createTableHead(theadId, tableId);
+      var trId = this.name + '-headTr';
+      createTr(trId, theadId);
+      var thId = this.name + '-th';
+      createTh(thId, trId, this.name);
+      var tbodyId = this.name + '-body';
+      createTableBody(tbodyId, tableId);
+      var headingsTrId = this.name + '-headingsTr';
+      createTr(headingsTrId, tbodyId);
+      var tfooterId = this.name + '-footer';
+      createTableFooter(tfooterId, tableId);
+
+      var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
+      for (hh=0; hh<headings.length; hh++) {
+        var headingThId = this.name + headings[hh];
+        createTh(headingThId, headingsTrId, headings[hh]);
+      }
+    },
+    populatePizzaTable: function() {
+      for (aa=0; aa<this.dailyPizzaData.length; aa++) {
+        var hourData = this.dailyPizzaData[aa];
+        var tableBodyId = this.name + '-body';
+        var tableRowId = this.name + '-tr-' + hourData[0];
+        createTr(tableRowId, tableBodyId);
+        for (bb=0; bb<hourData.length; bb++) {
+          createTd(tableRowId, hourData[bb]);
+        }
+      }
+    }
+  },
+
+  {
+    name: 'northeast',
+    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    getPizzaData: function() {
+      for (ii=0; ii<marketData.length; ii++) {
+        //Generate random data from marketData
+        var time = marketData[ii].time;
+        var pizzasThisHour = pizzasDuringHour(ii);
+        if (pizzasThisHour === 0) {
+          var deliveriesThisHour = 0;
+        } else {
+          var deliveriesThisHour = deliveriesDuringHour(ii);
+        }
+        if (pizzasThisHour === 0) {
+          var driversThisHour = 0;
+        } else {
+          var driversThisHour = driversDuringHour(ii);
+        }
+        //store random data in array
+        var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
+        this.dailyPizzaData.push(hourlyInfo);
+      }
+      return this.dailyPizzaData;
+    },
+    startPizzaTable: function(appendToThisId) {
+      var divId = this.name + '-div';
+      createDiv(divId, appendToThisId);
+      var tableId = this.name + '-tbl';
+      createTable(tableId, divId);
+      var theadId = this.name + '-head';
+      createTableHead(theadId, tableId);
+      var trId = this.name + '-headTr';
+      createTr(trId, theadId);
+      var thId = this.name + '-th';
+      createTh(thId, trId, this.name);
+      var tbodyId = this.name + '-body';
+      createTableBody(tbodyId, tableId);
+      var headingsTrId = this.name + '-headingsTr';
+      createTr(headingsTrId, tbodyId);
+      var tfooterId = this.name + '-footer';
+      createTableFooter(tfooterId, tableId);
+
+      var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
+      for (hh=0; hh<headings.length; hh++) {
+        var headingThId = this.name + headings[hh];
+        createTh(headingThId, headingsTrId, headings[hh]);
+      }
+    },
+    populatePizzaTable: function() {
+      for (aa=0; aa<this.dailyPizzaData.length; aa++) {
+        var hourData = this.dailyPizzaData[aa];
+        var tableBodyId = this.name + '-body';
+        var tableRowId = this.name + '-tr-' + hourData[0];
+        createTr(tableRowId, tableBodyId);
+        for (bb=0; bb<hourData.length; bb++) {
+          createTd(tableRowId, hourData[bb]);
+        }
+      }
+    }
+  },
+
+  {
+    name: 'clackamas',
+    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    getPizzaData: function() {
+      for (ii=0; ii<marketData.length; ii++) {
+        //Generate random data from marketData
+        var time = marketData[ii].time;
+        var pizzasThisHour = pizzasDuringHour(ii);
+        if (pizzasThisHour === 0) {
+          var deliveriesThisHour = 0;
+        } else {
+          var deliveriesThisHour = deliveriesDuringHour(ii);
+        }
+        if (pizzasThisHour === 0) {
+          var driversThisHour = 0;
+        } else {
+          var driversThisHour = driversDuringHour(ii);
+        }
+        //store random data in array
+        var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
+        this.dailyPizzaData.push(hourlyInfo);
+      }
+      return this.dailyPizzaData;
+    },
+    startPizzaTable: function(appendToThisId) {
+      var divId = this.name + '-div';
+      createDiv(divId, appendToThisId);
+      var tableId = this.name + '-tbl';
+      createTable(tableId, divId);
+      var theadId = this.name + '-head';
+      createTableHead(theadId, tableId);
+      var trId = this.name + '-headTr';
+      createTr(trId, theadId);
+      var thId = this.name + '-th';
+      createTh(thId, trId, this.name);
+      var tbodyId = this.name + '-body';
+      createTableBody(tbodyId, tableId);
+      var headingsTrId = this.name + '-headingsTr';
+      createTr(headingsTrId, tbodyId);
+      var tfooterId = this.name + '-footer';
+      createTableFooter(tfooterId, tableId);
+
+      var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
+      for (hh=0; hh<headings.length; hh++) {
+        var headingThId = this.name + headings[hh];
+        createTh(headingThId, headingsTrId, headings[hh]);
+      }
+    },
+    populatePizzaTable: function() {
+      for (aa=0; aa<this.dailyPizzaData.length; aa++) {
+        var hourData = this.dailyPizzaData[aa];
+        var tableBodyId = this.name + '-body';
+        var tableRowId = this.name + '-tr-' + hourData[0];
+        createTr(tableRowId, tableBodyId);
+        for (bb=0; bb<hourData.length; bb++) {
+          createTd(tableRowId, hourData[bb]);
+        }
+      }
+    }
+  },
+
+  {
+    name: 'pdx-airport',
+    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    getPizzaData: function() {
+      for (ii=0; ii<marketData.length; ii++) {
+        //Generate random data from marketData
+        var time = marketData[ii].time;
+        var pizzasThisHour = pizzasDuringHour(ii);
+        if (pizzasThisHour === 0) {
+          var deliveriesThisHour = 0;
+        } else {
+          var deliveriesThisHour = deliveriesDuringHour(ii);
+        }
+        if (pizzasThisHour === 0) {
+          var driversThisHour = 0;
+        } else {
+          var driversThisHour = driversDuringHour(ii);
+        }
+        //store random data in array
+        var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
+        this.dailyPizzaData.push(hourlyInfo);
+      }
+      return this.dailyPizzaData;
+    },
+    startPizzaTable: function(appendToThisId) {
+      var divId = this.name + '-div';
+      createDiv(divId, appendToThisId);
+      var tableId = this.name + '-tbl';
+      createTable(tableId, divId);
+      var theadId = this.name + '-head';
+      createTableHead(theadId, tableId);
+      var trId = this.name + '-headTr';
+      createTr(trId, theadId);
+      var thId = this.name + '-th';
+      createTh(thId, trId, this.name);
+      var tbodyId = this.name + '-body';
+      createTableBody(tbodyId, tableId);
+      var headingsTrId = this.name + '-headingsTr';
+      createTr(headingsTrId, tbodyId);
+      var tfooterId = this.name + '-footer';
+      createTableFooter(tfooterId, tableId);
+
+      var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
+      for (hh=0; hh<headings.length; hh++) {
+        var headingThId = this.name + headings[hh];
+        createTh(headingThId, headingsTrId, headings[hh]);
+      }
+    },
+    populatePizzaTable: function() {
+      for (aa=0; aa<this.dailyPizzaData.length; aa++) {
+        var hourData = this.dailyPizzaData[aa];
+        var tableBodyId = this.name + '-body';
+        var tableRowId = this.name + '-tr-' + hourData[0];
+        createTr(tableRowId, tableBodyId);
+        for (bb=0; bb<hourData.length; bb++) {
+          createTd(tableRowId, hourData[bb]);
+        }
       }
     }
   }
-};
-
-var store2 = {
-  name: 'hillsboro',
-  dailyPizzaData: [],         //Create array to store each hourlyInfo array in
-  getPizzaData: function() {
-    for (ii=0; ii<marketData.length; ii++) {
-      //Generate random data from marketData
-      var time = marketData[ii].time;
-      var pizzasThisHour = pizzasDuringHour(ii);
-      if (pizzasThisHour === 0) {
-        var deliveriesThisHour = 0;
-      } else {
-        var deliveriesThisHour = deliveriesDuringHour(ii);
-      }
-      if (pizzasThisHour === 0) {
-        var driversThisHour = 0;
-      } else {
-        var driversThisHour = driversDuringHour(ii);
-      }
-      //store random data in array
-      var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
-      this.dailyPizzaData.push(hourlyInfo);
-    }
-    return this.dailyPizzaData;
-  },
-  startPizzaTable: function(appendHere) {
-    var divId = this.name + '-div';
-    createDiv(divId, appendHere);
-    var tableId = this.name + '-tbl';
-    createTable(tableId, divId);
-    var theadId = this.name + '-head';
-    createTableHead(theadId, tableId);
-    var trId = this.name + '-headTr';
-    createTr(trId, theadId);
-    var thId = this.name + '-th';
-    createTh(thId, trId, this.name);
-    var tbodyId = this.name + '-body';
-    createTableBody(tbodyId, tableId);
-    var tfooterId = this.name + '-footer';
-    createTableFooter(tfooterId, tableId);
-  },
-  populatePizzaTable: function() {
-    for (aa=0; aa<this.dailyPizzaData.length; aa++) {
-      var hourData = this.dailyPizzaData[aa];
-      var tableBodyId = this.name + '-body';
-      var tableRowId = this.name + '-tr-' + hourData[0];
-      createTr(tableRowId, tableBodyId);
-      for (bb=0; bb<hourData.length; bb++) {
-        createTd(tableRowId, hourData[bb]);
-      }
-    }
-  }
-};
-
-var store3 = {
-  name: 'downtown',
-  dailyPizzaData: [],         //Create array to store each hourlyInfo array in
-  getPizzaData: function() {
-    for (ii=0; ii<marketData.length; ii++) {
-      //Generate random data from marketData
-      var time = marketData[ii].time;
-      var pizzasThisHour = pizzasDuringHour(ii);
-      if (pizzasThisHour === 0) {
-        var deliveriesThisHour = 0;
-      } else {
-        var deliveriesThisHour = deliveriesDuringHour(ii);
-      }
-      if (pizzasThisHour === 0) {
-        var driversThisHour = 0;
-      } else {
-        var driversThisHour = driversDuringHour(ii);
-      }
-      //store random data in array
-      var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
-      this.dailyPizzaData.push(hourlyInfo);
-    }
-    return this.dailyPizzaData;
-  },
-  startPizzaTable: function(appendHere) {
-    var divId = this.name + '-div';
-    createDiv(divId, appendHere);
-    var tableId = this.name + '-tbl';
-    createTable(tableId, divId);
-    var theadId = this.name + '-head';
-    createTableHead(theadId, tableId);
-    var trId = this.name + '-headTr';
-    createTr(trId, theadId);
-    var thId = this.name + '-th';
-    createTh(thId, trId, this.name);
-    var tbodyId = this.name + '-body';
-    createTableBody(tbodyId, tableId);
-    var tfooterId = this.name + '-footer';
-    createTableFooter(tfooterId, tableId);
-  },
-  populatePizzaTable: function() {
-    for (aa=0; aa<this.dailyPizzaData.length; aa++) {
-      var hourData = this.dailyPizzaData[aa];
-      var tableBodyId = this.name + '-body';
-      var tableRowId = this.name + '-tr-' + hourData[0];
-      createTr(tableRowId, tableBodyId);
-      for (bb=0; bb<hourData.length; bb++) {
-        createTd(tableRowId, hourData[bb]);
-      }
-    }
-  }
-};
-
-var store4 = {
-  name: 'northeast',
-  dailyPizzaData: [],         //Create array to store each hourlyInfo array in
-  getPizzaData: function() {
-    for (ii=0; ii<marketData.length; ii++) {
-      //Generate random data from marketData
-      var time = marketData[ii].time;
-      var pizzasThisHour = pizzasDuringHour(ii);
-      if (pizzasThisHour === 0) {
-        var deliveriesThisHour = 0;
-      } else {
-        var deliveriesThisHour = deliveriesDuringHour(ii);
-      }
-      if (pizzasThisHour === 0) {
-        var driversThisHour = 0;
-      } else {
-        var driversThisHour = driversDuringHour(ii);
-      }
-      //store random data in array
-      var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
-      this.dailyPizzaData.push(hourlyInfo);
-    }
-    return this.dailyPizzaData;
-  },
-  startPizzaTable: function(appendHere) {
-    var divId = this.name + '-div';
-    createDiv(divId, appendHere);
-    var tableId = this.name + '-tbl';
-    createTable(tableId, divId);
-    var theadId = this.name + '-head';
-    createTableHead(theadId, tableId);
-    var trId = this.name + '-headTr';
-    createTr(trId, theadId);
-    var thId = this.name + '-th';
-    createTh(thId, trId, this.name);
-    var tbodyId = this.name + '-body';
-    createTableBody(tbodyId, tableId);
-    var tfooterId = this.name + '-footer';
-    createTableFooter(tfooterId, tableId);
-  },
-  populatePizzaTable: function() {
-    for (aa=0; aa<this.dailyPizzaData.length; aa++) {
-      var hourData = this.dailyPizzaData[aa];
-      var tableBodyId = this.name + '-body';
-      var tableRowId = this.name + '-tr-' + hourData[0];
-      createTr(tableRowId, tableBodyId);
-      for (bb=0; bb<hourData.length; bb++) {
-        createTd(tableRowId, hourData[bb]);
-      }
-    }
-  }
-};
-
-var store5 = {
-  name: 'clackamas',
-  dailyPizzaData: [],         //Create array to store each hourlyInfo array in
-  getPizzaData: function() {
-    for (ii=0; ii<marketData.length; ii++) {
-      //Generate random data from marketData
-      var time = marketData[ii].time;
-      var pizzasThisHour = pizzasDuringHour(ii);
-      if (pizzasThisHour === 0) {
-        var deliveriesThisHour = 0;
-      } else {
-        var deliveriesThisHour = deliveriesDuringHour(ii);
-      }
-      if (pizzasThisHour === 0) {
-        var driversThisHour = 0;
-      } else {
-        var driversThisHour = driversDuringHour(ii);
-      }
-      //store random data in array
-      var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
-      this.dailyPizzaData.push(hourlyInfo);
-    }
-    return this.dailyPizzaData;
-  },
-  startPizzaTable: function(appendHere) {
-    var divId = this.name + '-div';
-    createDiv(divId, appendHere);
-    var tableId = this.name + '-tbl';
-    createTable(tableId, divId);
-    var theadId = this.name + '-head';
-    createTableHead(theadId, tableId);
-    var trId = this.name + '-headTr';
-    createTr(trId, theadId);
-    var thId = this.name + '-th';
-    createTh(thId, trId, this.name);
-    var tbodyId = this.name + '-body';
-    createTableBody(tbodyId, tableId);
-    var tfooterId = this.name + '-footer';
-    createTableFooter(tfooterId, tableId);
-  },
-  populatePizzaTable: function() {
-    for (aa=0; aa<this.dailyPizzaData.length; aa++) {
-      var hourData = this.dailyPizzaData[aa];
-      var tableBodyId = this.name + '-body';
-      var tableRowId = this.name + '-tr-' + hourData[0];
-      createTr(tableRowId, tableBodyId);
-      for (bb=0; bb<hourData.length; bb++) {
-        createTd(tableRowId, hourData[bb]);
-      }
-    }
-  }
-};
-
-var store6 = {
-  name: 'pdx-airport',
-  dailyPizzaData: [],         //Create array to store each hourlyInfo array in
-  getPizzaData: function() {
-    for (ii=0; ii<marketData.length; ii++) {
-      //Generate random data from marketData
-      var time = marketData[ii].time;
-      var pizzasThisHour = pizzasDuringHour(ii);
-      if (pizzasThisHour === 0) {
-        var deliveriesThisHour = 0;
-      } else {
-        var deliveriesThisHour = deliveriesDuringHour(ii);
-      }
-      if (pizzasThisHour === 0) {
-        var driversThisHour = 0;
-      } else {
-        var driversThisHour = driversDuringHour(ii);
-      }
-      //store random data in array
-      var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
-      this.dailyPizzaData.push(hourlyInfo);
-    }
-    return this.dailyPizzaData;
-  },
-  startPizzaTable: function(appendHere) {
-    var divId = this.name + '-div';
-    createDiv(divId, appendHere);
-    var tableId = this.name + '-tbl';
-    createTable(tableId, divId);
-    var theadId = this.name + '-head';
-    createTableHead(theadId, tableId);
-    var trId = this.name + '-headTr';
-    createTr(trId, theadId);
-    var thId = this.name + '-th';
-    createTh(thId, trId, this.name);
-    var tbodyId = this.name + '-body';
-    createTableBody(tbodyId, tableId);
-    var tfooterId = this.name + '-footer';
-    createTableFooter(tfooterId, tableId);
-  },
-  populatePizzaTable: function() {
-    for (aa=0; aa<this.dailyPizzaData.length; aa++) {
-      var hourData = this.dailyPizzaData[aa];
-      var tableBodyId = this.name + '-body';
-      var tableRowId = this.name + '-tr-' + hourData[0];
-      createTr(tableRowId, tableBodyId);
-      for (bb=0; bb<hourData.length; bb++) {
-        createTd(tableRowId, hourData[bb]);
-      }
-    }
-  }
-};
-/////////////////////////////////store objects////////////////////////////////////
+]
+///////////////////////////////array of store objects/////////////////////////////
