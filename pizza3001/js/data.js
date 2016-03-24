@@ -33,6 +33,25 @@ document.addEventListener('DOMContentLoaded', function() {
     hourlyTotals.push(hour);
   }
 
+  //Get hour increments from beaverton table and store in array hours
+  var hours = [];
+  for (rr=1; rr<=18; rr++) {
+    var body = document.getElementById('beaverton-body');
+    var row = body.rows[rr];
+    var cell = row.cells[0];
+    var childNode = cell.childNodes[0];
+    var data = childNode.nodeValue;
+    hours.push(data);
+  }
+
+  //add hourly totals to hourly-sales table
+  var rowId = stores[mm].name + '-week-total';
+  createTr(rowId, 'weekly-sales');
+  var dataContent = stores[mm].name.toUpperCase();
+  createTd(rowId, dataContent);
+  var weekTotal = stores[mm].weeklyPizzasSold;
+  createTd(rowId, weekTotal);
+
   //update counter for 'pizzas served today' on sales-data.html
   var counterEl = document.getElementById("pizza-counter");
   counterEl.textContent = totalPizzasPerDay;
