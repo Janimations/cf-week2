@@ -79,6 +79,7 @@ function createTableFooter(footerId, parentId) {
 function store(name) {
   this.name = name;
   this.dailyPizzasSold = 0;
+  this.weeklyPizzasSold = 0;
   this.pizzasPerHour = 0;
   this.deliveriesPerHour = 0;
   this.marketData = [     //array of hour objects, each with empty minsAndMaxes array
@@ -126,6 +127,7 @@ function store(name) {
     this.pizzasPerHour = randomWithinRange(this.marketData[arrayIndex].minsAndMaxes[0], this.marketData[arrayIndex].minsAndMaxes[1]);
     totalPizzasPerDay += this.pizzasPerHour;
     this.dailyPizzasSold += this.pizzasPerHour;
+    this.weeklyPizzasSold += (this.pizzasPerHour * 7);
     return this.pizzasPerHour;
   };
   this.deliveriesDuringHour = function(arrayIndex) {
@@ -209,6 +211,7 @@ function store(name) {
 //create each store and populate market data with respective figures
 var beaverton = new store('beaverton');
 beaverton.populateMarketData([ [0,4,0,4], [0,7,0,4], [2,15,1,4], [15,35,3,8], [12,31,5,12], [5,20,6,11] ]);
+console.log('Weekly pizza sales for beaverton: ' + beaverton.weeklyPizzasSold);
 
 var hillsboro = new store('hillsboro');
 hillsboro.populateMarketData([ [1,3,1,7], [5,9,2,8], [2,13,1,6], [18,32,3,9], [1,3,5,12], [8,20,6,16] ]);
