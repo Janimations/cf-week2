@@ -7,11 +7,14 @@
   </head>
 
   <body>
-    <h1 id="data-heading">Product & Delivery Demand by Hour</h1>
+    <h1 id="data-heading">Product & Delivery Demand</h1>
+    <div id="button">
+      <a href="index.html" id="button">[return to public page]</a>
+    </div>
     <h2 id="pizza-counter"></h2>
-    <h3 id="salesdata-h3">pizzas served today<br>across 6 locations<h3>
+    <h3 id="salesdata-h3">pizzas served today<br>across 6 locations</h3>
     <div id="weekly-data">
-      <table>
+      <table class="weekly-table">
         <thead>
           <tr>
             <th colspan='2'>Weekly Data At A Glance</th>
@@ -24,7 +27,7 @@
           </tr>
         </tbody>
       </table>
-      <table>
+      <table class="weekly-table">
         <thead>
           <tr>
             <th colspan='2'>Total Pizza Sales Per Hour</th>
@@ -38,6 +41,7 @@
         </tbody>
       </table>
     </div> <!--"weekly-data"-->
+    <h2 id="locations-h2">Sales and Deliveries by Location</h2>
     <div id="tables"></div>
     <script src="js/compute.js"></script>
     <script src="js/data.js"></script>

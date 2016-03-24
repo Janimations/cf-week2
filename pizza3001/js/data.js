@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     stores[mm].getPizzaData();
     stores[mm].startPizzaTable('tables');
     stores[mm].populatePizzaTable();
-
     //add weekly location data to weekly data table in sales-data.html
     var rowId = stores[mm].name + '-week-total';
     createTr(rowId, 'weekly-sales');
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var cell = row.cells[1];
       var childNode = cell.childNodes[0];
       var data = parseInt(childNode.nodeValue);
-      hour += data;
+      hour += data*7;  //Multiply by 7 for weekly data versus daily
     }
     hourlyTotals.push(hour);
   }

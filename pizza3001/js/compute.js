@@ -1,3 +1,4 @@
+//to store daily pizza sales for counter at top of sales-data.html
 var totalPizzasPerDay = 0;
 
 //function for generating random number within certain range
@@ -103,7 +104,7 @@ function store(name) {
     {'time': '01:00', 'minsAndMaxes': ''}
   ];
   this.dailyPizzaData = [];
-  this.populateMarketData = function(dataArray) { //accepts array of hourly data arrays
+  this.populateMarketData = function(dataArray) { //accepts array of six hourly data arrays, one for each three-hour period for which market data is available
     for (x=0; x<3; x++) {
       this.marketData[x].minsAndMaxes = dataArray[0];
     }
@@ -141,9 +142,9 @@ function store(name) {
     var driversNeeded;
     var deliveries = this.deliveriesPerHour;
     var remainder = deliveries%3;
-    if (deliveries === 0) {
+    if (deliveries === 0) {  //if no deliveries, no drivers
       driversNeeded = 0;
-    } else if (remainder === 0) {
+    } else if (remainder === 0) {  //3 deliveries/hour/driver expected
         driversNeeded = deliveries/3;
       } else {
           driversNeeded = Math.floor(deliveries/3) + 1;
