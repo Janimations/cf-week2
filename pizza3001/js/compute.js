@@ -313,14 +313,6 @@ function startPizzaTable(storeLoc, appendHere) {   //TODO can combine with popul
   createTableBody(tbodyId, tableId);
   var tfooterId = storeLoc + '-footer';
   createTableFooter(tfooterId, tableId);
-  var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
-
-  for (hh=0; hh<headings.length; hh++) {
-    var tableHeading = document.createElement('th');
-    newTableRow.appendChild(tableHeading);
-    var headingText = document.createTextNode(headings[jj]);
-    tableHeading.appendChild(headingText);
-  }
 };
 
 function getPizzaData() {
@@ -398,8 +390,16 @@ var store1 = {
     createTh(thId, trId, this.name);
     var tbodyId = this.name + '-body';
     createTableBody(tbodyId, tableId);
+    var headingsTrId = this.name + '-headingsTr';
+    createTr(headingsTrId, tbodyId);
     var tfooterId = this.name + '-footer';
     createTableFooter(tfooterId, tableId);
+
+    var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
+    for (hh=0; hh<headings.length; hh++) {
+      var headingThId = this.name + headings[hh];
+      createTh(headingThId, headingsTrId, headings[hh]);
+    }
   },
   populatePizzaTable: function() {
     for (aa=0; aa<this.dailyPizzaData.length; aa++) {
