@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  store1.pizzaTable();
-  store2.pizzaTable();
-  store3.pizzaTable();
-  store4.pizzaTable();
-  store5.pizzaTable();
-  store6.pizzaTable();
+  //generate hourly data for each store and write table to sales-data.html
+  for (mm=0; mm<stores.length; mm++) {
+    stores[mm].getPizzaData();
+    stores[mm].startPizzaTable('tables');
+    stores[mm].populatePizzaTable();
+  }
 
+  //update counter for 'pizzas served today' on sales-data.html
   var counterEl = document.getElementById("pizza-counter");
   counterEl.textContent = totalPizzasPerDay;
   console.log(totalPizzasPerDay);
