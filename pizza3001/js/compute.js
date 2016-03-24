@@ -1,4 +1,4 @@
-//Array of objects for market data; each object represents an hour
+////////////////////////////////array with market data////////////////////////////
 var marketData = [
   {
     'time': '8:00',
@@ -127,10 +127,11 @@ var marketData = [
     'maxDlvryPerHour': 11
   }
 ];
+////////////////////////////////array with market data////////////////////////////
 
-//////////////////////////functions for generating random numbers/////////////////
 var totalPizzasPerDay = 0;
 
+//////////////////////////functions for generating random numbers/////////////////
 function randomWithinRange(min, max) {
   var randomNumber = Math.floor(Math.random() * (max-min+1) + min);
   return randomNumber;
@@ -168,74 +169,8 @@ function driversDuringHour(arrayIndex) {
 //////////////////////////functions for generating random numbers/////////////////
 
 
-// function createPizzaTable(title, tableId) {
-//   //Create h2 and first row and insert both into page
-//   var bodyEl = document.getElementsByTagName('body')[0];
-//   var h2new = document.createElement('h2');
-//   var h2text = document.createTextNode(title);
-//   h2new.appendChild(h2text);
-//   bodyEl.appendChild(h2new);
-//   var newTable = document.createElement('table');
-//   newTable.setAttribute('id', tableId);
-//   bodyEl.appendChild(newTable);
-//   var newTableRow = document.createElement('tr');
-//   newTable.appendChild(newTableRow);
-//
-  // var headings = ['Hour', 'Pizzas', 'Deliveries', 'Drivers'];
-  //
-  // for (jj=0; jj<headings.length; jj++) {
-  //   var tableHeading = document.createElement('th');
-  //   newTableRow.appendChild(tableHeading);
-  //   var headingText = document.createTextNode(headings[jj]);
-  //   tableHeading.appendChild(headingText);
-  // }
-//
-//   var pizzaTable = document.getElementById(tableId);
-//
-//   for (ii=0; ii<marketData.length; ii++) {
-//     //Generate random data from marketData
-//     var time = marketData[ii].time;
-//     var pizzasThisHour = pizzasDuringHour(ii);
-//     if (pizzasThisHour === 0) {
-//       var deliveriesThisHour = 0;
-//     } else {
-//       var deliveriesThisHour = deliveriesDuringHour(ii);
-//     }
-//     if (pizzasThisHour === 0) {
-//       var driversThisHour = 0;
-//     } else {
-//       var driversThisHour = driversDuringHour(ii);
-//     }
-//     //store random data in array
-//     var thisHourInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
-//     //Make new row for each hour's random data array
-//     var newTableRow = document.createElement('tr');
-//     for (kk=0; kk<thisHourInfo.length; kk++) {
-//       var newTableCell = document.createElement('td');
-//       var tdText = document.createTextNode(thisHourInfo[kk]);
-//       newTableCell.appendChild(tdText);
-//       newTableRow.appendChild(newTableCell);
-//     }
-//     //Append each hour's row to pizzaTable
-//     pizzaTable.appendChild(newTableRow);
-//   }
-// };
-
-var totalPizzasPerWeek;
-// function getTotalPizzasPerWeek() {
-//   var totalPizzasPerDay = 0;
-//   for (ii=0; ii<marketData.length; ii++) {
-//     //Generate random data from marketData
-//     var pizzasThisHour = pizzasDuringHour(ii);
-//     totalPizzasPerDay += pizzasThisHour;
-//   }
-//   var allLocations = totalPizzasPerDay * 6;
-//   totalPizzasPerWeek = allLocations * 7;
-//   return totalPizzasPerWeek;
-// };
-
-
 //////////////////////////functions for generating table//////////////////////////
+//create div to house table and attach to HTML element, found by id
 function createDiv(divId, parentId) {
   var parentEl = document.getElementById(parentId);
   var newDiv = document.createElement('div');
@@ -243,6 +178,7 @@ function createDiv(divId, parentId) {
   parentEl.appendChild(newDiv);
 };
 
+//create table element and append to div
 function createTable(tableId, parentId) {
   var parentEl = document.getElementById(parentId);
   var newTable = document.createElement('table');
@@ -250,6 +186,7 @@ function createTable(tableId, parentId) {
   parentEl.appendChild(newTable);
 };
 
+//create table head and append to table
 function createTableHead(headId, parentId) {
   var parentEl = document.getElementById(parentId);
   var newThead = document.createElement('thead');
@@ -257,6 +194,23 @@ function createTableHead(headId, parentId) {
   parentEl.appendChild(newThead);
 };
 
+//create table body and append to table
+function createTableBody(bodyId, parentId) {
+  var parentEl = document.getElementById(parentId);
+  var newTbody = document.createElement('thbody');       //!!!!!!!thbody
+  newTbody.setAttribute('id', bodyId);
+  parentEl.appendChild(newTbody);
+};
+
+//create table row and append to thead or table body
+function createTr(trId, parentId) {
+  var parentEl = document.getElementById(parentId);
+  var newTrow = document.createElement('tr');
+  newTrow.setAttribute('id', trId);
+  parentEl.appendChild(newTrow);
+};
+
+//create th and append to tr
 function createTh(thId, parentId, contents) {
   var parentEl = document.getElementById(parentId);
   var newTh = document.createElement('th');
@@ -266,20 +220,7 @@ function createTh(thId, parentId, contents) {
   newTh.appendChild(nodeText);
 };
 
-function createTableBody(bodyId, parentId) {
-  var parentEl = document.getElementById(parentId);
-  var newTbody = document.createElement('thbody');
-  newTbody.setAttribute('id', bodyId);
-  parentEl.appendChild(newTbody);
-};
-
-function createTr(trId, parentId) {
-  var parentEl = document.getElementById(parentId);
-  var newTrow = document.createElement('tr');
-  newTrow.setAttribute('id', trId);
-  parentEl.appendChild(newTrow);
-};
-
+//create td and append to tr
 function createTd(parentId, contents) {
   var parentEl = document.getElementById(parentId);
   var newTdata = document.createElement('td');
@@ -288,6 +229,7 @@ function createTd(parentId, contents) {
   newTdata.appendChild(nodeText);
 };
 
+//create table footer - not yet used
 function createTableFooter(footerId, parentId) {
   var parentEl = document.getElementById(parentId);
   var newTfooter = document.createElement('tfoot');
@@ -296,61 +238,6 @@ function createTableFooter(footerId, parentId) {
 };
 //////////////////////////functions for generating table//////////////////////////
 
-
-//////////////////////////methods for store objects///////////////////////////////
-function startPizzaTable(storeLoc, appendHere) {   //TODO can combine with populatePizzaTable?
-  var divId = storeLoc + '-div';
-  createDiv(divId, appendHere);
-  var tableId = storeLoc + '-tbl';
-  createTable(tableId, divId);
-  var theadId = storeLoc + '-head';
-  createTableHead(theadId, tableId);
-  var trId = storeLoc + '-headTr';
-  createTr(trId, theadId);
-  var thId = storeLoc + '-th';
-  createTh(thId, trId, storeLoc);
-  var tbodyId = storeLoc + '-body';
-  createTableBody(tbodyId, tableId);
-  var tfooterId = storeLoc + '-footer';
-  createTableFooter(tfooterId, tableId);
-};
-
-function getPizzaData() {
-  //Create array to store each hourlyInfo array in
-  var dailyPizzaData = [];                //!!dailyPizzaData should be property of store object!!
-  for (ii=0; ii<marketData.length; ii++) {
-    //Generate random data from marketData
-    var time = marketData[ii].time;
-    var pizzasThisHour = pizzasDuringHour(ii);
-    if (pizzasThisHour === 0) {
-      var deliveriesThisHour = 0;
-    } else {
-      var deliveriesThisHour = deliveriesDuringHour(ii);
-    }
-    if (pizzasThisHour === 0) {
-      var driversThisHour = 0;
-    } else {
-      var driversThisHour = driversDuringHour(ii);
-    }
-    //store random data in array
-    var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
-    dailyPizzaData.push(hourlyInfo);
-  }
-  return dailyPizzaData;
-}
-
-function populatePizzaTable() {
-  for (aa=0; aa<this.dailyPizzaData.length; aa++) {
-    var hourData = this.dailyPizzaData[aa];
-    var tableBodyId = this.name + '-body';
-    var tableRowId = this.name + '-tr-' + hourData[0];
-    createTr(tableRowId, tableBodyId);
-    for (bb=0; bb<hourData.length; bb++) {
-      createTd(tableRowId, hourData[bb]);
-    }
-  }
-}
-//////////////////////////methods for store objects///////////////////////////////
 
 ///////////////////////////////array of store objects/////////////////////////////
 var stores = [
@@ -378,7 +265,7 @@ var stores = [
       }
       return this.dailyPizzaData;
     },
-    startPizzaTable: function(appendToThisId) {
+    startPizzaTable: function(appendToThisId) {   //build div, table, and first two rows containing store name and column headings
       var divId = this.name + '-div';
       createDiv(divId, appendToThisId);
       var tableId = this.name + '-tbl';
@@ -402,7 +289,7 @@ var stores = [
         createTh(headingThId, headingsTrId, headings[hh]);
       }
     },
-    populatePizzaTable: function() {
+    populatePizzaTable: function() {    //insert daily pizza data into rows and attach to pizza table
       for (aa=0; aa<this.dailyPizzaData.length; aa++) {
         var hourData = this.dailyPizzaData[aa];
         var tableBodyId = this.name + '-body';
@@ -417,7 +304,7 @@ var stores = [
 
   {
     name: 'hillsboro',
-    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    dailyPizzaData: [],
     getPizzaData: function() {
       for (ii=0; ii<marketData.length; ii++) {
         //Generate random data from marketData
@@ -478,7 +365,7 @@ var stores = [
 
   {
     name: 'downtown',
-    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    dailyPizzaData: [],
     getPizzaData: function() {
       for (ii=0; ii<marketData.length; ii++) {
         //Generate random data from marketData
@@ -539,7 +426,7 @@ var stores = [
 
   {
     name: 'northeast',
-    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    dailyPizzaData: [],
     getPizzaData: function() {
       for (ii=0; ii<marketData.length; ii++) {
         //Generate random data from marketData
@@ -600,7 +487,7 @@ var stores = [
 
   {
     name: 'clackamas',
-    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    dailyPizzaData: [],
     getPizzaData: function() {
       for (ii=0; ii<marketData.length; ii++) {
         //Generate random data from marketData
@@ -661,7 +548,7 @@ var stores = [
 
   {
     name: 'pdx-airport',
-    dailyPizzaData: [],         //Create array to store each hourlyInfo array in
+    dailyPizzaData: [],
     getPizzaData: function() {
       for (ii=0; ii<marketData.length; ii++) {
         //Generate random data from marketData
