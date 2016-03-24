@@ -303,21 +303,25 @@ function createTableFooter(footerId, parentId) {
 
 //************************NEW FUNCTION!!!!*******************************
 function startPizzaTable(storeLoc, appendHere) {
-  var divId = storeLoc + "-div";
+  var divId = storeLoc + '-div';
   createDiv(divId, appendHere);
-  var tableId = storeLoc + "-tbl";
+  var tableId = storeLoc + '-tbl';
   createTable(tableId, divId);
   var theadId = storeLoc + '-head';
   createTableHead(theadId, tableId);
-  var trId = storeLoc + '-tr';
+  var trId = storeLoc + '-headTr';
   createTr(trId, theadId);
-  var thId = storeLoc + "-th" + 1;    ///FOR populatePizzaTable, this number must increment by 1
+  var thId = storeLoc + '-th';
   createTh(thId, trId, storeLoc);
+  var tbodyId = storeLoc + '-body';
+  createTableBody(tbodyId, tableId);
+  var tfooterId = storeLoc + '-footer';
+  createTableFooter(tfooterId, tableId);
 };
 
 function getPizzaData() {
   //Create array to store each hourlyInfo array in
-  var dailyPizzaData = [];
+  var dailyPizzaData = [];                //!!dailyPizzaData should be property of store object!!
   for (ii=0; ii<marketData.length; ii++) {
     //Generate random data from marketData
     var time = marketData[ii].time;
@@ -341,7 +345,14 @@ function getPizzaData() {
 
 
 function populatePizzaTable() {
+  for (aa=0; aa<this.dailyPizzaData.length; aa++) {
+    var hourData = this.dailyPizzaData[aa];
 
+    for (bb=0; bb<hourData.length; bb++) {
+      var tableBodyId = this.name + ''
+    }
+
+  }
 }
 
 
