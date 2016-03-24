@@ -315,7 +315,34 @@ function startPizzaTable(storeLoc, appendHere) {
   createTh(thId, trId, storeLoc);
 };
 
+function getPizzaData() {
+  //Create array to store each hourlyInfo array in
+  var dailyPizzaData = [];
+  for (ii=0; ii<marketData.length; ii++) {
+    //Generate random data from marketData
+    var time = marketData[ii].time;
+    var pizzasThisHour = pizzasDuringHour(ii);
+    if (pizzasThisHour === 0) {
+      var deliveriesThisHour = 0;
+    } else {
+      var deliveriesThisHour = deliveriesDuringHour(ii);
+    }
+    if (pizzasThisHour === 0) {
+      var driversThisHour = 0;
+    } else {
+      var driversThisHour = driversDuringHour(ii);
+    }
+    //store random data in array
+    var hourlyInfo = [time, pizzasThisHour, deliveriesThisHour, driversThisHour];
+    dailyPizzaData.push(hourlyInfo);
+  }
+  return dailyPizzaData;
+}
 
+
+function populatePizzaTable() {
+
+}
 
 
 var store1 = {
