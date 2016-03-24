@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     stores[mm].getPizzaData();
     stores[mm].startPizzaTable('tables');
     stores[mm].populatePizzaTable();
+    console.log(stores[mm].dailyPizzasSold);
   }
 
   //update counter for 'pizzas served today' on sales-data.html
   var counterEl = document.getElementById("pizza-counter");
   counterEl.textContent = totalPizzasPerDay;
-  console.log(totalPizzasPerDay);
 
 });
