@@ -284,10 +284,9 @@ function createTr(trId, parentId) {
 };
 
 //************************NEW FUNCTION!!!!*******************************
-function createTd(tdId, parentId, contents) {
+function createTd(parentId, contents) {
   var parentEl = document.getElementById(parentId);
   var newTdata = document.createElement('td');
-  newTdata.setAttribute('id', tdId);
   parentEl.appendChild(newTdata);
   var nodeText = document.createTextNode(contents);
   newTdata.appendChild(nodeText);
@@ -319,7 +318,7 @@ function startPizzaTable(storeLoc, appendHere) {
   createTableFooter(tfooterId, tableId);
 };
 
-function getPizzaData() {
+function getPizzaData() {         ////IMPORTANT NOTE WITHIN!!!
   //Create array to store each hourlyInfo array in
   var dailyPizzaData = [];                //!!dailyPizzaData should be property of store object!!
   for (ii=0; ii<marketData.length; ii++) {
@@ -347,13 +346,15 @@ function getPizzaData() {
 function populatePizzaTable() {
   for (aa=0; aa<this.dailyPizzaData.length; aa++) {
     var hourData = this.dailyPizzaData[aa];
-
+    var tableBodyId = this.name + '-body';
+    var tableRowId = this.name + '-tr-' + hourData[0];
+    createTr(tableRowId, tableBodyId);
     for (bb=0; bb<hourData.length; bb++) {
-      var tableBodyId = this.name + ''
+      createTd(tableRowId, hourData[bb]);
     }
-
   }
 }
+
 
 
 var store1 = {
