@@ -1,133 +1,33 @@
 ////////////////////////////////array with market data////////////////////////////
 var marketData = [
-  {
-    'time': '8:00',
-    'minPizzasPerHour': 0,
-    'maxPizzasPerHour': 4,
-    'minDlvryPerHour': 0,
-    'maxDlvryPerHour': 4
-  },
-  {
-    'time': '9:00',
-    'minPizzasPerHour': 0,
-    'maxPizzasPerHour': 4,
-    'minDlvryPerHour': 0,
-    'maxDlvryPerHour': 4
-  },
-  {
-    'time': '10:00',
-    'minPizzasPerHour': 0,
-    'maxPizzasPerHour': 4,
-    'minDlvryPerHour': 0,
-    'maxDlvryPerHour': 4
-  },
-  {
-    'time': '11:00',
-    'minPizzasPerHour': 0,
-    'maxPizzasPerHour': 7,
-    'minDlvryPerHour': 0,
-    'maxDlvryPerHour': 4
-  },
-  {
-    'time': '12:00',
-    'minPizzasPerHour': 0,
-    'maxPizzasPerHour': 7,
-    'minDlvryPerHour': 0,
-    'maxDlvryPerHour': 4
-  },
-  {
-    'time': '13:00',
-    'minPizzasPerHour': 0,
-    'maxPizzasPerHour': 7,
-    'minDlvryPerHour': 0,
-    'maxDlvryPerHour': 4
-  },
-  {
-    'time': '14:00',
-    'minPizzasPerHour': 2,
-    'maxPizzasPerHour': 15,
-    'minDlvryPerHour': 1,
-    'maxDlvryPerHour': 4
-  },
-  {
-    'time': '15:00',
-    'minPizzasPerHour': 2,
-    'maxPizzasPerHour': 15,
-    'minDlvryPerHour': 1,
-    'maxDlvryPerHour': 4
-  },
-  {
-    'time': '16:00',
-    'minPizzasPerHour': 2,
-    'maxPizzasPerHour': 15,
-    'minDlvryPerHour': 1,
-    'maxDlvryPerHour': 4
-  },
-  {
-    'time': '17:00',
-    'minPizzasPerHour': 15,
-    'maxPizzasPerHour': 35,
-    'minDlvryPerHour': 3,
-    'maxDlvryPerHour': 8
-  },
-  {
-    'time': '18:00',
-    'minPizzasPerHour': 15,
-    'maxPizzasPerHour': 35,
-    'minDlvryPerHour': 3,
-    'maxDlvryPerHour': 8
-  },
-  {
-    'time': '19:00',
-    'minPizzasPerHour': 15,
-    'maxPizzasPerHour': 35,
-    'minDlvryPerHour': 3,
-    'maxDlvryPerHour': 8
-  },
-  {
-    'time': '20:00',
-    'minPizzasPerHour': 12,
-    'maxPizzasPerHour': 31,
-    'minDlvryPerHour': 5,
-    'maxDlvryPerHour': 12
-  },
-  {
-    'time': '21:00',
-    'minPizzasPerHour': 12,
-    'maxPizzasPerHour': 31,
-    'minDlvryPerHour': 5,
-    'maxDlvryPerHour': 12
-  },
-  {
-    'time': '22:00',
-    'minPizzasPerHour': 12,
-    'maxPizzasPerHour': 31,
-    'minDlvryPerHour': 5,
-    'maxDlvryPerHour': 12
-  },
-  {
-    'time': '23:00',
-    'minPizzasPerHour': 5,
-    'maxPizzasPerHour': 20,
-    'minDlvryPerHour': 6,
-    'maxDlvryPerHour': 11
-  },
-  {
-    'time': '00:00',
-    'minPizzasPerHour': 5,
-    'maxPizzasPerHour': 20,
-    'minDlvryPerHour': 6,
-    'maxDlvryPerHour': 11
-  },
-  {
-    'time': '01:00',
-    'minPizzasPerHour': 5,
-    'maxPizzasPerHour': 20,
-    'minDlvryPerHour': 6,
-    'maxDlvryPerHour': 11
-  }
+  {'time': '8:00', 'minsAndMaxes': []},
+  {'time': '9:00', 'minsAndMaxes': []},
+  {'time': '10:00', 'minsAndMaxes': []},
+  {'time': '11:00', 'minsAndMaxes': []},
+  {'time': '12:00', 'minsAndMaxes': []},
+  {'time': '13:00', 'minsAndMaxes': []},
+  {'time': '14:00', 'minsAndMaxes': []},
+  {'time': '15:00', 'minsAndMaxes': []},
+  {'time': '16:00', 'minsAndMaxes': []},
+  {'time': '17:00', 'minsAndMaxes': []},
+  {'time': '18:00', 'minsAndMaxes': []},
+  {'time': '19:00', 'minsAndMaxes': []},
+  {'time': '20:00', 'minsAndMaxes': []},
+  {'time': '21:00', 'minsAndMaxes': []},
+  {'time': '22:00', 'minsAndMaxes': []},
+  {'time': '23:00', 'minsAndMaxes': []},
+  {'time': '00:00', 'minsAndMaxes': []},
+  {'time': '01:00', 'minsAndMaxes': []}
 ];
 ////////////////////////////////array with market data////////////////////////////
+
+function populateMarketData(dataArray) {
+  for (ff=0; ff<dataArray.length; ff++) {
+    for (gg=0; gg<dataArray[ff].length; gg++) {
+      this.marketData[ff].minsAndMaxes.push(dataArray[ff][gg]);
+    }
+  }
+}
 
 var totalPizzasPerDay = 0;
 
