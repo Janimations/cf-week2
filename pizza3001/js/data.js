@@ -1,14 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  store1.pizzaTable();
-  store2.pizzaTable();
-  store3.pizzaTable();
-  store4.pizzaTable();
-  store5.pizzaTable();
-  store6.pizzaTable();
+  store1.getPizzaData();
+  store1.startPizzaTable('tables');
+  store1.populatePizzaTable();
 
-  var counterEl = document.getElementById("pizza-counter");
-  counterEl.textContent = totalPizzasPerDay;
-  console.log(totalPizzasPerDay);
+  // var counterEl = document.getElementById("pizza-counter");
+  // counterEl.textContent = totalPizzasPerDay;
+  // console.log(totalPizzasPerDay);
 
 });
