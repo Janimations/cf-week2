@@ -34,7 +34,7 @@ function createTableHead(headId, parentId) {
 //create table body and append to table
 function createTableBody(bodyId, parentId) {
   var parentEl = document.getElementById(parentId);
-  var newTbody = document.createElement('thbody');       //!!!!!!!thbody
+  var newTbody = document.createElement('tbody');   //////////WAS thbody
   newTbody.setAttribute('id', bodyId);
   parentEl.appendChild(newTbody);
 };
@@ -182,6 +182,8 @@ function store(name) {
     createTr(trId, theadId);
     var thId = this.name + '-th';
     createTh(thId, trId, this.name);
+    var thEl = document.getElementById(thId);
+    thEl.setAttribute('colspan', '4');
     var tbodyId = this.name + '-body';
     createTableBody(tbodyId, tableId);
     var headingsTrId = this.name + '-headingsTr';
@@ -211,7 +213,6 @@ function store(name) {
 //create each store and populate market data with respective figures
 var beaverton = new store('beaverton');
 beaverton.populateMarketData([ [0,4,0,4], [0,7,0,4], [2,15,1,4], [15,35,3,8], [12,31,5,12], [5,20,6,11] ]);
-console.log('Weekly pizza sales for beaverton: ' + beaverton.weeklyPizzasSold);
 
 var hillsboro = new store('hillsboro');
 hillsboro.populateMarketData([ [1,3,1,7], [5,9,2,8], [2,13,1,6], [18,32,3,9], [1,3,5,12], [8,20,6,16] ]);
