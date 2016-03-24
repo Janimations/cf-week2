@@ -17,14 +17,21 @@ document.addEventListener('DOMContentLoaded', function() {
     createTd(rowId, weekTotal);
   }
 
-  var table = document.getElementById('beaverton-body');
-  var row = table.rows[1];
-  console.log(row);
-  // var cell = row.cells[1];
-  // var childNode = cell.childNodes[0];
-  // var data = childNode.nodeValue;
-  // console.log('cell contents: ');
-  // console.log(data);
+  //Add up total pizza sales across stores for each hour and store in array hourlyTotals
+  var hourlyTotals = [];
+  for (rr=1; rr<=18; rr++) {
+    var hour = 0;
+    for (qq=0; qq<stores.length; qq++) {
+      var tableBodyId = stores[qq].name + '-body';
+      var body = document.getElementById(tableBodyId);
+      var row = body.rows[rr];
+      var cell = row.cells[1];
+      var childNode = cell.childNodes[0];
+      var data = parseInt(childNode.nodeValue);
+      hour += data;
+    }
+    hourlyTotals.push(hour);
+  }
 
   //update counter for 'pizzas served today' on sales-data.html
   var counterEl = document.getElementById("pizza-counter");

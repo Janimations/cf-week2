@@ -34,7 +34,7 @@ function createTableHead(headId, parentId) {
 //create table body and append to table
 function createTableBody(bodyId, parentId) {
   var parentEl = document.getElementById(parentId);
-  var newTbody = document.createElement('tbody');   //////////WAS thbody
+  var newTbody = document.createElement('tbody');
   newTbody.setAttribute('id', bodyId);
   parentEl.appendChild(newTbody);
 };
