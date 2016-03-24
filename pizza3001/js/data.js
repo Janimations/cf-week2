@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   //generate hourly data for each store and write table to sales-data.html
 
+  //build and populate tables
   for (mm=0; mm<stores.length; mm++) {
     //generate random pizza data and build and print tables to sales-data.html
     stores[mm].getPizzaData();
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     createTd(rowId, weekTotal);
   }
 
-  //Add up total pizza sales across stores for each hour and store in array hourlyTotals
+  //add up total pizza sales across stores for each hour and store in array hourlyTotals
   var hourlyTotals = [];
   for (rr=1; rr<=18; rr++) {
     var hour = 0;
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     hourlyTotals.push(hour);
   }
 
-  //Get hour increments from beaverton table and store in array hours
+  //get hour increments from beaverton table and store in array hours
   var hours = [];
   for (rr=1; rr<=18; rr++) {
     var body = document.getElementById('beaverton-body');
@@ -45,12 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   //add hourly totals to hourly-sales table
-  var rowId = stores[mm].name + '-week-total';
-  createTr(rowId, 'weekly-sales');
-  var dataContent = stores[mm].name.toUpperCase();
-  createTd(rowId, dataContent);
-  var weekTotal = stores[mm].weeklyPizzasSold;
-  createTd(rowId, weekTotal);
+  for (ll=0; ll<hours.length; ll++) {
+    var rowId = hours[ll] + '-weekly-total';
+    createTr(rowId, 'hourly-sales');
+    var hourContent = hours[ll];
+    createTd(rowId, hourContent);
+    var totalContent = hourlyTotals[ll];
+    createTd(rowId, totalContent);
+  }
 
   //update counter for 'pizzas served today' on sales-data.html
   var counterEl = document.getElementById("pizza-counter");
