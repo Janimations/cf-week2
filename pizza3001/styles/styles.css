@@ -34,6 +34,10 @@ h3 {
   text-align: center;
 }
 
+.form-text {
+  color:black;
+}
+
 #locations-h2 {
   margin-top: 60px;
 }
@@ -51,8 +55,15 @@ h3 {
   position: fixed;
   display: block;
   background-color: #b00000;
-  opacity: 0.5;
   margin: 0;
+}
+
+#form-div h2 {
+  margin: 30px auto 0px auto;
+  color: white;
+  text-align: center;
+  width: 200px;
+  padding: 0;
 }
 
 #data-div {
