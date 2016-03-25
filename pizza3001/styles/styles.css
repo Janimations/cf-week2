@@ -2,6 +2,7 @@
   font-family: 'Garamond', sans-serif;
   color: #b00000;
   font-weight: bolder;
+  margin: 0;
 }
 
 html.public {
@@ -12,6 +13,11 @@ html.public {
 
 html.private {
   background-color: gray;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 h1, h2 {
@@ -37,6 +43,22 @@ h3 {
   text-transform: lowercase;
   font-family: 'Titillium Web', sans-serif;
   letter-spacing: 4px;
+}
+
+#form-div {
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  display: block;
+  background-color: #b00000;
+  opacity: 0.5;
+  margin: 0;
+}
+
+#data-div {
+  margin: 0;
+  width: 70%;
+  float: right;
 }
 
 #beaverton-div,
@@ -71,7 +93,7 @@ table {
 
 #index-container {
   background-image: url('../images/galaxy.jpg');
-  height: 120%;
+  height: 100%;
   width: 80%;
   position: absolute;
   top: 0;
